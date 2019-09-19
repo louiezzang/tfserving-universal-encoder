@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+requests = "*"
+numpy = "*"
+pandas = "*"
+pyyaml = "*"
+tensorflow = "==2.0.0-rc0"
+tf-hub-nightly = "*"
+tensorflow-serving-api = "*"
+grpcio = "*"
+grpcio-tools = "*"
+
+[requires]
+python_version = "3.7"
