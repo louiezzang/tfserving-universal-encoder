@@ -7,6 +7,7 @@ import tensorflow_hub as hub
 def main(args):
     # module_url = "https://tfhub.dev/google/tf2-preview/nnlm-en-dim128/1"
     # module_url = "https://tfhub.dev/google/tf2-preview/nnlm-en-dim50/1"
+    # export_path = "data/tfserving/nnlm-en-dim50/00000001"
     module_url = args.module_url
     export_path = args.export_path
 
@@ -16,7 +17,6 @@ def main(args):
     print(embeddings.shape)
     print(embeddings)
 
-    # export_path = "data/tfserving/nnlm-en-dim50/00000001"
     print("Exporting trained model to", export_path)
     tf.saved_model.save(embed, export_path)
 
