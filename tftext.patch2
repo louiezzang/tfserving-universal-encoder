@@ -1,0 +1,14 @@
+--- a/tensorflow_text/core/kernels/BUILD	2020-01-03 10:40:52.562505384 +0000
++++ b/tensorflow_text/core/kernels/BUILD	2020-01-03 10:46:51.927143543 +0000
+@@ -16,8 +16,9 @@
+     "@com_google_absl//absl/strings",
+     "@com_google_absl//absl/types:optional",
+     "@com_google_absl//absl/types:span",
+-    "@local_config_tf//:libtensorflow_framework",
+-    "@local_config_tf//:tf_header_lib",
++    "@org_tensorflow//tensorflow/core:framework",
++    "@org_tensorflow//tensorflow/core:lib",
++    "@org_tensorflow//tensorflow/core:protos_all_cc",
+ ]
+
+ tf_kernel_library(

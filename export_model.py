@@ -1,7 +1,8 @@
 import argparse
 import tensorflow as tf
-from tensorflow import keras
 import tensorflow_hub as hub
+from tensorflow import keras
+import tensorflow_text
 
 
 def main(args):
@@ -12,7 +13,8 @@ def main(args):
     export_path = args.export_path
 
     input = ["A long sentence.", "single-word", "http://example.com"]
-    embed = hub.KerasLayer(module_url)
+    # embed = hub.KerasLayer(module_url)
+    embed = hub.load(module_url)
     embeddings = embed(input)
     print(embeddings.shape)
     print(embeddings)

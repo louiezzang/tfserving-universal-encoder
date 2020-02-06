@@ -52,6 +52,8 @@ class UniversalEncoder(object):
         for i in range(0, len(data), self.BATCH_SIZE):
             batch = data[i:i+self.BATCH_SIZE]
             print(batch)
+            # -------------------------------------------------
+            # gRPC mode:
             # request = predict_pb2.PredictRequest()
             # request.model_spec.name = "universal_encoder"
             # request.model_spec.signature_name = ""
@@ -59,11 +61,13 @@ class UniversalEncoder(object):
             # result_future = self.stub.Predict.future(request, 5.0)  # 5 seconds
             # result_future.add_done_callback(
             #     UniversalEncoder._create_rpc_callback())
+            # -------------------------------------------------
 
             data = json.dumps({
-                "examples": batch
+                "inputs": batch
             })
             headers = {"content-type": "application/json"}
+            print("************* server_url = " + self.server_url)
             response = requests.post(
                 self.server_url,
                 data=data,
@@ -81,7 +85,9 @@ class UniversalEncoder(object):
 def main(args):
     server_url = args.server
 
-    data = ["I am a hero"]
+    data = ["I am a hero", "test"]
+
+    print(server_url)
 
     encoder = UniversalEncoder(server_url)
     result = encoder.encode(data)
